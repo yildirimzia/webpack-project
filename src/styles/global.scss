@@ -1,0 +1,10 @@
+@import "variables";
+
+body {
+	background-color: $bg;
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+}

@@ -1,3 +1,6 @@
+import './styles/index.scss';
+
+
 const elvenShiledRecipe = {
 	leatherStrips: 2,
 	ironIngot:1,
