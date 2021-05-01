@@ -1,3 +1,4 @@
+const { loader } = require('image-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 let mode = 'development';
@@ -12,15 +13,26 @@ module.exports = {
 	mode: mode,
 	target: target,
 
+	output: {
+    assetModuleFilename: "images/[hash][ext][query]",
+  },
+
 	module: {
 		rules: [
 			{
+				test: /\.(jpe?g|png|gif|svg)$/i,
+				type: 'asset',
+			},
+			{
 				test: /\.(s[ac]|c)ss$/i,
         use: [
-					MiniCssExtractPlugin.loader,
-					 'css-loader',
-					 'sass-loader',
-					],
+					{
+            loader: MiniCssExtractPlugin.loader,
+            options: { publicPath: "" },
+          },
+          "css-loader",
+          "sass-loader",
+				],
 			},
 			{
 				test:/\.jsx?$/,
